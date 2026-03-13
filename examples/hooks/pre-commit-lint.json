@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "command": "if echo \"$TOOL_INPUT\" | jq -r '.command // empty' | grep -q 'git commit'; then npm run lint --silent 2>&1 | tail -20; fi",
+        "timeout": 30000
+      }
+    ],
+    "PreToolUse": [
+      {
+        "command": "if [ \"$TOOL_NAME\" = 'Write' ] || [ \"$TOOL_NAME\" = 'Edit' ]; then FILE=$(echo \"$TOOL_INPUT\" | jq -r '.file_path // empty'); if echo \"$FILE\" | grep -qE '\\.(js|ts|jsx|tsx)$'; then npx eslint --fix \"$FILE\" 2>/dev/null; fi; fi",
+        "timeout": 10000
+      }
+    ]
+  }
+}

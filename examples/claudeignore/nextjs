@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+build/
+dist/
+
+# Vercel
+.vercel/
+
+# Type build info
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Storybook
+storybook-static/
+
+# Environment files
+.env*
+
+# Generated files
+*.min.js
+*.min.css
+*.map
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

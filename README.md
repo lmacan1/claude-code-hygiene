@@ -19,12 +19,31 @@ Anyone using Claude Code who:
 ## Repo structure
 
 ```
-CLAUDE.md                      # The rules this repo itself uses (dogfooding)
 templates/
   universal.md                 # Base token efficiency rules — works in any repo
-  large-repo.md                # Extra rules for big codebases (monorepos, 1000+ files)
+  large-repo.md                # Extra rules for big codebases (1000+ files)
+  frontend.md                  # Rules for React, Next.js, Vue, Svelte projects
+  api.md                       # Rules for REST/GraphQL API and backend projects
+  monorepo.md                  # Rules for monorepo workspaces
+
+guides/
+  context-window.md            # Flagship guide — all context management strategies
+  hooks.md                     # Claude Code hooks: config, events, examples
+  subagents.md                 # When and how to use subagents effectively
+  cost-optimization.md         # All cost levers ranked by impact
+  git-worktrees.md             # Parallel branches with isolated Claude sessions
+
 skills/
-  claude-md-trimmer.md         # Skill: analyzes bloated CLAUDE.md, splits + rewrites lean
+  claude-md-trimmer.md         # Skill: audit + rewrite bloated CLAUDE.md files
+  claude-md-audit.md           # Skill: read-only audit with waste ratio report
+  claudeignore-generator.md    # Skill: auto-detect stack, generate .claudeignore
+
+examples/
+  claudeignore/
+    nextjs                     # .claudeignore for Next.js projects
+    python                     # .claudeignore for Python projects
+  hooks/
+    pre-commit-lint.json       # Hook config: lint on commit and format on save
 ```
 
 ## How to use it
@@ -33,7 +52,15 @@ skills/
 
 **Large codebases:** Start with `universal.md`, then append the rules from `large-repo.md`.
 
-**Already have a CLAUDE.md?** Run the `claude-md-trimmer` skill to audit it and split bloated sections into separate reference files.
+**Frontend / API projects:** Also append `templates/frontend.md` or `templates/api.md`.
+
+**Monorepos:** Stack `universal.md` + `large-repo.md` + `monorepo.md`.
+
+**Already have a CLAUDE.md?** Run the `claude-md-audit` skill for a read-only report, or the `claude-md-trimmer` skill to split and rewrite it.
+
+**Need a .claudeignore?** Run the `claudeignore-generator` skill to auto-detect your stack and generate one, or copy from `examples/claudeignore/`.
+
+**Want to understand the full picture?** Read `guides/context-window.md` for all context management strategies, or `guides/cost-optimization.md` for the numbers-focused summary.
 
 ## Contributing
 

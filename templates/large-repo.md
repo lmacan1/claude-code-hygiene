@@ -23,8 +23,6 @@ Append these to universal.md when working in codebases with 1000+ files, monorep
 - When modifying a shared utility, check for existing callers before changing its signature.
 - Keep PRs focused. One logical change per commit, not a kitchen-sink refactor.
 
-## Monorepo-specific
+## Monorepo
 
-- Identify which package/workspace you're operating in before making changes.
-- Don't assume shared dependencies. Check the local package.json.
-- Run tests scoped to the affected package, not the entire monorepo.
+For monorepo-specific rules, see `templates/monorepo.md`.
